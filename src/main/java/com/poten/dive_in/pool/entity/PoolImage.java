@@ -21,7 +21,7 @@ public class PoolImage extends BaseTimeEntity {
 
     private String imageUrl;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pool_id" )
     private Pool pool;
 }

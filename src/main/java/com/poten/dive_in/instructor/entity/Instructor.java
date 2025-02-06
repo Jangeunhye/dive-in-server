@@ -18,7 +18,7 @@ public class Instructor extends BaseTimeEntity {
 
     private String instructorInfo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "academy_id" )
     private Academy academy;
 }

@@ -24,7 +24,7 @@ public class LessonApplyChannel extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private LessonChannelType applyUrlType;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lesson_id")
     private Lesson lesson;
 }

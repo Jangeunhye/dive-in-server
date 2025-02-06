@@ -19,7 +19,7 @@ public class TokenManager extends BaseTimeEntity {
 
     private LocalDateTime expirationDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 

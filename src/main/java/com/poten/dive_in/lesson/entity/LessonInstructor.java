@@ -19,11 +19,11 @@ public class LessonInstructor extends BaseTimeEntity {
     @Column(name="lesson_instructor_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lesson_id")
     private Lesson lesson;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="instructor_id")
     private Instructor instructor;
 
