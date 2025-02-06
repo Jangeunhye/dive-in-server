@@ -42,7 +42,7 @@ public class LessonService {
 
     @Transactional(readOnly = true)
     public List<LessonListResponseDto> getLessonList(){
-        List<Lesson> lessonList = lessonRepository.findAll();
+        List<Lesson> lessonList = lessonRepository.findAllJPQLFetch();
         return lessonList.stream().map(LessonListResponseDto::ofEntity).toList();
     }
 

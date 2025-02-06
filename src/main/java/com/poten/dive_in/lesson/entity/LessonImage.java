@@ -20,7 +20,7 @@ public class LessonImage extends BaseTimeEntity {
 
     private String imageUrl;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lesson_id")
     private Lesson lesson;
 }

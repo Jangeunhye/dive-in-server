@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.BatchSize;
 
 import java.util.List;
 
@@ -41,20 +42,23 @@ public class Lesson extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private LessonStatus lessonStatus;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "academy_id")
     private Academy academy;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pool_id")
     private Pool pool;
 
+    @BatchSize(size = 100)
     @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LessonImage> imageList;
 
+    @BatchSize(size = 100)
     @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LessonInstructor> lessonInstructorList;
 
+    @BatchSize(size = 100)
     @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LessonApplyChannel> applyChannelList;
 
